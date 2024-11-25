@@ -69,7 +69,7 @@ help_function() {
 }
 
 main() {
-    pushd "${HOME}"
+    pushd -q "${HOME}"
     case ${1} in
     can_be_initialized) check_dss_can_be_initialized ;;
     namespace_is_deployed) check_dss_namespace_is_deployed ;;
@@ -80,7 +80,7 @@ main() {
     can_remove_notebook) check_dss_can_remove_notebook "${@:2}" ;;
     *) help_function ;;
     esac
-    popd
+    popd -q
 }
 
 main "$@"
